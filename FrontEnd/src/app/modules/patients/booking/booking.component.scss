@@ -1,0 +1,17 @@
+.main-pane{
+    display: flex;
+    flex-direction: column;
+.white-pane{
+    background-color: white;
+    background: rgb(241 246 241 / 80%);
+    color: black;
+    width: 30%;
+   margin-top: 20%;
+    margin-left: 5%;
+    border-radius: 5px;
+    min-width: 500px;
+    h3{
+        color: #053a48;
+    }
+}
+}

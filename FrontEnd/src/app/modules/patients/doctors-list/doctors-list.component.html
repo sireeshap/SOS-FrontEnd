@@ -1,0 +1,20 @@
+<div class="row">
+    <div class="col-3" *ngFor="let doc of doctorsList">
+        <div class="form-group">
+            <mat-card class="example-card">
+                <mat-card-header>
+                  <mat-card-title>{{doc.NAME}}</mat-card-title>
+                 
+                </mat-card-header>
+                <img mat-card-image class="card-image" [src]="assetPath+'doc.png'" alt="Doctor">
+                <mat-card-content>
+                  <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</p>
+                </mat-card-content>
+                <mat-card-actions>
+                  <button mat-button>Book Appointment</button>
+                </mat-card-actions>
+              </mat-card>
+        </div>
+    </div>
+    </div>

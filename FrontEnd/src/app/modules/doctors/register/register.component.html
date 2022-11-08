@@ -1,0 +1,59 @@
+<div class="row">
+    <div class="col-md-6 col-md-offset-3 mx-auto white-pane">
+        <h2 class="text-center">Registration Form</h2>
+    <form [formGroup]="registerForm" (submit)="onRegister(registerForm)">
+        <div class="form-group">
+            <label for="name">Enter Name</label>
+            <input class="form-control" formControlName="name" placeholder="Enter name">
+            <div class="text-danger" *ngIf="(registerForm.get('name')?.dirty ||registerForm.get('name')?.touched) &&  registerForm.get('name')?.errors?.required">
+                Name Required
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="name">Specialization</label>
+            <mat-select class="form-control" formControlName="specialization">
+                <mat-option [value]="option.id" *ngFor="let option of specializations">{{option.name}}</mat-option>
+              </mat-select>
+            <div class="text-danger" *ngIf="(registerForm.get('specialization')?.dirty ||registerForm.get('specialization')?.touched) &&  registerForm.get('specialization')?.errors?.required">
+                Specialization Required
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="name">Number of Slots per Day</label>
+            <mat-select class="form-control" formControlName="slotCount">
+                <mat-option [value]="option" *ngFor="let option of slotsCount">{{option}}</mat-option>
+              </mat-select>
+            <div class="text-danger" *ngIf="(registerForm.get('slotCount')?.dirty ||registerForm.get('slotCount')?.touched) &&  registerForm.get('slotCount')?.errors?.required">
+                Slot count Required
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="name">Booking Date Range</label>
+            <br>
+            <mat-form-field appearance="fill" class="form-control">
+                <mat-label>Enter a date range</mat-label>
+                <mat-date-range-input [rangePicker]="picker">
+                  <input matStartDate formControlName="start" placeholder="Start date">
+                  <input matEndDate formControlName="end" placeholder="End date">
+                </mat-date-range-input>
+                <mat-hint>Format: MM/DD/YYYY – MM/DD/YYYY</mat-hint>
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-date-range-picker #picker></mat-date-range-picker>
+              
+                <mat-error *ngIf="registerForm.controls.start.hasError('matStartDateInvalid')">Invalid start date</mat-error>
+                <mat-error *ngIf="registerForm.controls.end.hasError('matEndDateInvalid')">Invalid end date</mat-error>
+            </mat-form-field>
+
+            <div class="text-danger" *ngIf="(registerForm.get('name')?.dirty ||registerForm.get('name')?.touched) &&  registerForm.get('name')?.errors?.required">
+                Date Range Required
+            </div>
+        </div>
+        <div class="form-group">
+            <mat-checkbox class="form-control" formControlName="available">I am available for bookings</mat-checkbox>
+        </div>
+        <div class="col-12 text-center">
+            <button type="Submit" class="btn btn-secondary">Submit</button>
+        </div>
+    </form>
+    </div>
+</div>
